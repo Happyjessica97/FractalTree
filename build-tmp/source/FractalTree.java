@@ -1,6 +1,22 @@
-private double fractionLength = .80; 
+import processing.core.*; 
+import processing.data.*; 
+import processing.event.*; 
+import processing.opengl.*; 
+
+import java.util.HashMap; 
+import java.util.ArrayList; 
+import java.io.File; 
+import java.io.BufferedReader; 
+import java.io.PrintWriter; 
+import java.io.InputStream; 
+import java.io.OutputStream; 
+import java.io.IOException; 
+
+public class FractalTree extends PApplet {
+
+private double fractionLength = .80f; 
 private int smallestBranch = 10; 
-private double branchAngle = .2;  
+private double branchAngle = .2f;  
 public void setup() 
 {   
 	size(700,480);    
@@ -18,7 +34,7 @@ public void draw()
 } 
 public void mousePressed() {
 	smallestBranch = smallestBranch +1;
-	branchAngle = branchAngle + .1;
+	branchAngle = branchAngle + .1f;
 	redraw();
 }
 public void drawBranches(int x,int y, double branchLength, double angle) 
@@ -38,3 +54,12 @@ public void drawBranches(int x,int y, double branchLength, double angle)
 
 	} 
 } 
+  static public void main(String[] passedArgs) {
+    String[] appletArgs = new String[] { "FractalTree" };
+    if (passedArgs != null) {
+      PApplet.main(concat(appletArgs, passedArgs));
+    } else {
+      PApplet.main(appletArgs);
+    }
+  }
+}
